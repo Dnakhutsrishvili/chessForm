@@ -1,6 +1,8 @@
 import classes from "./PersonalInfo.module.css";
 import king from "../images/king.png";
 import banner from "../images/banner.png";
+import Form from "./Components/Form";
+
 const PersonalInfo = () => {
   return (
     <>
@@ -37,18 +39,7 @@ const PersonalInfo = () => {
           <p className={classes.perInfo}>Personal Information</p>
           <p className={classes.basicInfo}>This is basic informaton fields</p>
 
-
-          {/* <Form></Form> */}
-
-          {/* <form>
-          <input type="text" className={classes.name}  name="firstname" placeholder="Your name.."></input>
-
-          <input type="email"  name="email" placeholder="Your mail.."></input>
-
-          <input type="number"  name="phone" placeholder="Your phone.."></input>
-
-          <input type="date"  name="date" placeholder="Your date.."></input>
-          </form> */}
+          <Form></Form>
         </div>
       </div>
     </>

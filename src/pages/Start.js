@@ -22,7 +22,7 @@ const Start = () => {
             <p className={classes.chessSays}> chess says </p>
             <p className={classes.about}>a lot about</p>
           </div>
-          <p className={classes.whowe}> who we are</p>
+          <p className={classes.textp}> who we are</p>
           <Link className={classes.decoration} to="/personal">
           <button className={classes.btn}>
             <span className={classes.spanPerent}>

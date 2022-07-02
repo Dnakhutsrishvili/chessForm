@@ -1,7 +1,7 @@
 .parent {
   display: flex;
 }
-
+/* conteiner header style */
 .conteiner {
   width: 923px;
   height: 84px;
@@ -91,7 +91,7 @@
 .boxParent {
   display: flex;
 }
-
+/* box styles */
 .boxOne {
   box-sizing: border-box;
   margin-left: 107px;
