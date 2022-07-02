@@ -1,0 +1,116 @@
+.parent {
+  display: flex;
+}
+
+.conteiner {
+  width: 923px;
+  height: 84px;
+  background-color: #7025fb;
+  margin: 0;
+}
+
+.cuptext {
+  margin: 0;
+  color: #ffffff;
+  margin-top: 30px;
+}
+
+.cupparent {
+  display: flex;
+  gap: 8.27px;
+  align-items: center;
+  margin-left: 60px;
+
+  font-family: "OpenSans";
+  font-size: 22px;
+}
+
+.kingimg {
+  margin-top: 30px;
+}
+
+.rightWindow {
+  background-color: #fd5334;
+  width: 997px;
+  height: 1280px;
+}
+
+.chessSays {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 80px;
+  line-height: 109px;
+  text-transform: uppercase;
+
+  color: #ffffff;
+}
+
+.whowe {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 80px;
+  line-height: 109px;
+  text-transform: uppercase;
+
+  color: #ffffff;
+  margin-top: -76px;
+  margin-left: 85px;
+}
+.about {
+  font-family: "Nunito";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
+  text-transform: uppercase;
+
+  color: #212529;
+}
+
+.textParent {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  margin-top: 265px;
+  margin-left: 85px;
+}
+
+.btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 13px 24px;
+  gap: 10px;
+  background: #212529;
+  border-radius: 8px;
+  margin-left: 85px;
+  cursor: pointer;
+  border: none;
+}
+
+.link {
+  text-decoration: none;
+  width: 107px;
+  height: 27px;
+
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  text-transform: capitalize;
+ 
+  color: #ffffff;
+}
+.spanPerent {
+  display: flex;
+  gap: 12px;
+}
+
+.decoration {
+  text-decoration: none;
+  width: 107px;
+  height: 27px;
+}
