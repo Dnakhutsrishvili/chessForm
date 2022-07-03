@@ -2,10 +2,11 @@
   display: flex;
   margin-top: 322px;
   flex-direction: column;
-  gap: 40px;
+  gap: 32px;
 }
 /* input form style except date */
 .input {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -13,8 +14,9 @@
 
   width: 743px;
   height: 30px;
+  padding-bottom: 8px;
+  padding-left: 16px;
 
-  background: #ffffff;
   /* Border & Divider/divider ↓ */
 
   box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.125);
@@ -40,16 +42,40 @@
 }
 
 .input::-webkit-input-placeholder {
+  width: 743px;
+  height: 30px;
+
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 150%;
+
+  color: rgba(33, 37, 41, 0.5);
+
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+
   color: #212529;
 }
 
-.input:focus {
-  background-color: lightgray;
+.date:focus::-webkit-input-placeholder {
+  background-color: #e9ecef;
+}
+.date:hover::-webkit-input-placeholder {
+  background-color: #f8f9fa;
+}
+
+.date:focus {
+  background-color: #e9ecef;
   border: none;
   outline: none;
 }
 
 .date {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -74,6 +100,8 @@
   align-self: stretch;
   flex-grow: 0;
   margin-left: 48px;
+  padding-bottom: 8px;
+  padding-left: 16px;
 
   width: 743px;
   height: 30px;
@@ -84,14 +112,16 @@
   font-size: 20px;
   line-height: 150%;
 }
-
-/* remove placeholder on click */
-.input:focus::placeholder {
-  color: transparent;
+/* remove defoult arrows from number placeholder */
+.date::-webkit-outer-spin-button,
+.date::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
+
 /* date placeholder styles */
 .date:focus {
-  background-color: lightgray;
+  background-color: #e9ecef;
   border: none;
   outline: none;
 }
@@ -108,18 +138,109 @@
 
 /*static text placeholder*/
 .dateText {
+  cursor: pointer;
   position: absolute;
   font-family: "OpenSans";
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 150%;
- width: 100%;
+  width: 39%;
   margin-left: 48px;
-  margin-top: 210px;
+  margin-top: 208px;
   color: #212529;
-}
-.redStar{
-  color:red;
+  background-color: white;
+  padding-left: 16px;
+  padding-bottom: 8px;
 }
 
+.numberText {
+  cursor: pointer;
+  position: absolute;
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 150%;
+  width: 39%;
+  margin-left: 48px;
+  margin-top: 139px;
+  color: #212529;
+  background-color: white;
+  padding-left: 16px;
+  padding-bottom: 8px;
+}
+.emailText {
+  cursor: pointer;
+  position: absolute;
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 150%;
+  width: 39%;
+  margin-left: 48px;
+  margin-top: 69px;
+  color: #212529;
+  background-color: white;
+  padding-left: 16px;
+  padding-bottom: 8px;
+}
+
+.nameText {
+  cursor: pointer;
+  position: absolute;
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 150%;
+  width: 39%;
+  margin-left: 48px;
+  margin-top: -1px;
+  color: #212529;
+  background-color: white;
+  padding-left: 16px;
+  padding-bottom: 8px;
+}
+.nameText:hover {
+  background-color: #f8f9fa;
+  color: rgba(33, 37, 41, 0.5);
+}
+.emailText:hover {
+  background-color: #f8f9fa;
+  color: rgba(33, 37, 41, 0.5);
+}
+
+.numberText:hover {
+  background-color: #f8f9fa;
+  color: rgba(33, 37, 41, 0.5);
+}
+.dateText:hover {
+  background-color: #f8f9fa;
+  color: rgba(33, 37, 41, 0.5);
+}
+.redStar {
+  color: red;
+}
+/* styles for approved icon */
+.approved {
+  width: 20px;
+  position: absolute;
+  margin-left: 750px;
+  margin-top: 3px;
+}
+
+.approvedEmail {
+  width: 20px;
+  position: absolute;
+  margin-left: 750px;
+  margin-top: 73px;
+}
+
+.approvedPhone {
+  width: 20px;
+  position: absolute;
+  margin-left: 750px;
+  margin-top: 143px;
+}

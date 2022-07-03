@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "./Form.module.css";
+import pwichka from "../../images/pwichka.png";
 
 const Form = () => {
   // state for date placeholder
   const [showDate, setShowDate] = useState(true);
-
-
+  const [showNumber, setShowNumber] = useState(true);
+  const [showEmail, setShowEmail] = useState(true);
+  const [showName, setShowName] = useState(true);
 
   //states for validation
   const [validateName, setValidateName] = useState(false);
@@ -13,9 +15,17 @@ const Form = () => {
   const [validateNumber, setValidateNumber] = useState(false);
   const [validateDate, setValidateDate] = useState(false);
 
-  //states for style changing
-  const [styleName, setstyleName] = useState({backgroundColor :"white"});
+  //states for name style changing
+  const [styleName, setstyleName] = useState({ backgroundColor: "none" });
+  const [styleNameApp, setstyleNameApp] = useState({ display: "none" });
 
+  //states for email style changing
+  const [styleEmail, setstyleEmail] = useState({ backgroundColor: "none" });
+  const [styleEmailApp, setstyleEmailApp] = useState({ display: "none" });
+
+  //states for phone style changing
+  const [stylePhone, setstylePhone] = useState({ backgroundColor: "none" });
+  const [stylePhoneApp, setstylePhoneApp] = useState({ display: "none" });
 
   //state for input value
   const [name, setName] = useState("");
@@ -23,33 +33,60 @@ const Form = () => {
   const [number, setNumber] = useState("");
   const [date, setDate] = useState("");
 
+  useEffect(() => {
+    if (name.length > 2) {
+      setValidateName(true);
+    } else {
+      setValidateName(false);
+    }
+
+    if (email.endsWith("@redberry.ge")) {
+      setValidateEmail(true);
+    } else {
+      setValidateEmail(false);
+    }
+
+    if (number.length >= 9 && /^[0-9]+$/.test(number)) {
+      setValidateNumber(true);
+    }else{
+      setValidateNumber(false);
+    }
+  }, [name, email, number]);
+
   //validation function
   const validateFunc = (event) => {
-
     //cheking for validation
-    event.preventDefault()
-    if (name.length > 2) {
-      setValidateName(true)
-     
-    }
-    console.log("name"+validateName)
-    if(email.endsWith("@redberry.ge")){
-      setValidateEmail(true)
-      console.log("email"+validateEmail)
+    event.preventDefault();
+
+    //change input form on validate, if false change back color, if true appears approved mark
+    if (!validateName) {
+      setstyleName({ backgroundColor: "#FFEFEF", color: "#DC3545" });
+      setstyleNameApp({ display: "none" });
+    } else {
+      setstyleNameApp({ display: "flex" });
+      setstyleName({ backgroundColor: "white" });
     }
 
-    if(number.length>=9&&/^[0-9]+$/.test(number)){
-      setValidateNumber(true)
-      console.log("number"+validateNumber)
+    //email
+
+    if (!validateEmail) {
+      setstyleEmail({ backgroundColor: "#FFEFEF", color: "#DC3545" });
+      setstyleEmailApp({ display: "none" });
+    } else {
+      setstyleEmailApp({ display: "flex" });
+      setstyleEmail({ backgroundColor: "white" });
     }
 
-  //change input form on v
-  if(!validateName){
-    setstyleName({backgroundColor :"#FFEFEF",color:"#DC3545" })
-  
-  }
- 
-  }
+    //phone
+
+    if (!validateNumber) {
+      setstylePhone({ backgroundColor: "#FFEFEF", color: "#DC3545" });
+      setstylePhoneApp({ display: "none" });
+    } else {
+      setstylePhoneApp({ display: "flex" });
+      setstylePhone({ backgroundColor: "white" });
+    }
+  };
 
   return (
     <>
@@ -59,31 +96,80 @@ const Form = () => {
             setName(e.target.value);
           }}
           type="text"
-          className={classes.input}
+          className={classes.date}
           name="firstname"
-          placeholder="Name *"
+     
           style={styleName}
         ></input>
-
+          {showName && (
+          <p
+            onClick={(e) => {
+              setShowName(false);
+            }}
+            className={classes.nameText}
+          >
+            Name <span className={classes.redStar}>*</span>
+          </p>
+        )}
+        <img
+          style={styleNameApp}
+          className={classes.approved}
+          src={pwichka}
+          alt="approved"
+        ></img>
         <input
           onChange={(e) => {
             setEmail(e.target.value);
           }}
-          className={classes.input}
+          className={classes.date}
           type="email"
           name="email"
-          placeholder="Email adress *"
+        
+          style={styleEmail}
         ></input>
-
+         {showEmail && (
+          <p
+            onClick={(e) => {
+              setShowEmail(false);
+            }}
+            className={classes.emailText}
+          >
+            Email adress <span className={classes.redStar}>*</span>
+          </p>
+        )}
+   <img
+          style={styleEmailApp}
+          className={classes.approvedEmail}
+          src={pwichka}
+          alt="approved"
+        ></img>
         <input
           onChange={(e) => {
             setNumber(e.target.value);
+           
           }}
-          className={classes.input}
+          className={classes.date}
           type="number"
           name="phone"
-          placeholder="Phone number *"
+       
+          style={stylePhone}
         ></input>
+           {showNumber && (
+          <p
+            onClick={(e) => {
+              setShowNumber(false);
+            }}
+            className={classes.numberText}
+          >
+            Phone number <span className={classes.redStar}>*</span>
+          </p>
+        )}
+          <img
+          style={stylePhoneApp}
+          className={classes.approvedPhone}
+          src={pwichka}
+          alt="approved"
+        ></img>
 
         <input
           onChange={(e) => {
@@ -91,8 +177,8 @@ const Form = () => {
           }}
           className={classes.date}
           type="date"
-          required
-          placeholder="Date"
+          // required
+        
         ></input>
         {showDate && (
           <p
