@@ -432,3 +432,24 @@
   border: 1px solid rgba(194, 165, 249, 0.8);
   border-radius: 8px;
 }
+
+.approvedImage{
+  
+  display: flex;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  justify-content: center;
+  margin-left: 107px;
+  margin-top: -40px;
+  
+  background: red;
+  border-radius: 8px;
+  
+}
+.img{
+
+  width:22.84px;
+  height:12.21px;
+
+}

@@ -3,20 +3,20 @@ import classes from "./Form.module.css";
 import pwichka from "../../images/pwichka.png";
 import important from "../../images/important.png";
 import vector from "../../images/Vector.png";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import finalapproved from "../../images/finalapproved.png";
+import LocalStorage from "./LocalStorage";
 
 const Form = () => {
-  
-
+  const navigate = useNavigate();
   //final validate
-  const [finalValidate, setfinalValidate] = useState("/personal");
+  const [user, setUser] = useState();
   // state for date placeholder
   const [showDate, setShowDate] = useState(true);
   const [showNumber, setShowNumber] = useState(true);
   const [showEmail, setShowEmail] = useState(true);
   const [showName, setShowName] = useState(true);
-
+console.log(showName)
   //state for error message
 
   const [showDateError, setShowDateeError] = useState(false);
@@ -44,6 +44,7 @@ const Form = () => {
       inputDate.current.focus();
     }
   }, [showName, showEmail, showNumber, showDate]);
+
   //states for validation
   const [validateName, setValidateName] = useState(false);
   const [validateEmail, setValidateEmail] = useState(false);
@@ -67,10 +68,37 @@ const Form = () => {
   const [styleDateApp, setstyleDateApp] = useState({ display: "none" });
 
   //state for input value
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [number, setNumber] = useState("");
-  const [date, setDate] = useState("");
+  const [name, setName] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("name");
+ 
+    
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+  const [email, setEmail] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("email");
+  
+    
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+  const [number, setNumber] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("number");
+ 
+    
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
+  const [date, setDate] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("date");
+ 
+    const initialValue = JSON.parse(saved);
+    return initialValue || "";
+  });
 
   useEffect(() => {
     if (name.length >= 2) {
@@ -98,6 +126,18 @@ const Form = () => {
     }
   }, [name, email, number, date]);
 
+  useEffect(() => {
+    // storing input name
+    localStorage.setItem("name", JSON.stringify(name));
+    // storing input email
+    localStorage.setItem("email", JSON.stringify(email));
+    // storing input number
+    localStorage.setItem("number", JSON.stringify(number));
+    // storing input date
+    localStorage.setItem("date", JSON.stringify(date));
+
+    
+  }, [name, email, number, date]);
   //validation function
   const validateFunc = (event) => {
     //cheking for validation
@@ -148,15 +188,67 @@ const Form = () => {
       setstyleDate({ backgroundColor: "white" });
       setShowDateeError(false);
     }
-
-    if(validateName&&validateEmail&&validateNumber&&validateDate){
-
-    
+    if (validateDate && validateEmail && validateName && validateNumber) {
+      
+      navigate("/experience");
     }
+
+
   };
 
+  //validate after refresh
+  useEffect(() => {
+    //name
+    const saved = localStorage.getItem("name");
+ 
+    const initialValue = JSON.parse(saved);
+   
+    if (initialValue.length>0) {
+      setShowName(false);
+    } 
+    if(initialValue.length>1){
+      setstyleNameApp({ display: "flex" })
+    }
+    //email
+    const email = localStorage.getItem("email");
+ 
+    const emailValue = JSON.parse(email);
+   
+    if (emailValue.length>0) {
+      setShowEmail(false);
+      
+    } 
+    if(emailValue.endsWith("@redberry.ge")){
+      setstyleEmailApp({ display: "flex" })
+    }
+    //phone
+    const number = localStorage.getItem("number");
+ 
+    const numberValue = JSON.parse(number);
+   
+    if (numberValue.length>0) {
+      setShowNumber(false);
+    } 
+    if(numberValue.length===9){
+      setstylePhoneApp({ display: "flex" })
+    }
+    //date
+    const date = localStorage.getItem("date");
+ 
+    const dateValue = JSON.parse(date);
+   
+    if (dateValue.length>0) {
+      setShowDate(false);
+    } 
+    if (dateValue.length===10) {
+      setstyleDateApp({ display: "flex" })
+    } 
+  }, []);
   return (
     <>
+      <div className={classes.approvedImage}>
+        <img className={classes.img} src={finalapproved} alt="approved"></img>
+      </div>
       {showNameeError && (
         <div className={classes.errorPopup}>
           <div className={classes.secPerent}>
@@ -251,6 +343,7 @@ const Form = () => {
           type="text"
           className={classes.date}
           name="firstname"
+          value={name}
           style={styleName}
           ref={inputName}
         ></input>
@@ -278,6 +371,7 @@ const Form = () => {
           className={classes.date}
           type="email"
           name="email"
+          value={email}
           ref={inputEmail}
           style={styleEmail}
         ></input>
@@ -304,6 +398,7 @@ const Form = () => {
           className={classes.date}
           type="number"
           name="phone"
+          value={number}
           ref={inputPhone}
           style={stylePhone}
         ></input>
@@ -330,6 +425,7 @@ const Form = () => {
           }}
           className={classes.date}
           type="date"
+          value={date}
           ref={inputDate}
           style={styleDate}
         ></input>
@@ -349,12 +445,12 @@ const Form = () => {
           src={pwichka}
           alt="approved"
         ></img>
-      
-        <button   className={classes.nextbtn} type="submit">
+
+        <button className={classes.nextbtn} type="submit">
           <span className={classes.btntext}>Next</span>
+
           <img src={vector} alt="vector"></img>
         </button>
-   
       </form>
       <Link to="/">
         <button className={classes.backbtn}>Back</button>
