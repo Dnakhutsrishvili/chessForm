@@ -5,12 +5,12 @@ import important from "../../images/important.png";
 import vector from "../../images/Vector.png";
 import { Link, useNavigate } from "react-router-dom";
 import finalapproved from "../../images/finalapproved.png";
-import LocalStorage from "./LocalStorage";
+
 
 const Form = () => {
   const navigate = useNavigate();
   //final validate
-  const [user, setUser] = useState();
+ 
   // state for date placeholder
   const [showDate, setShowDate] = useState(true);
   const [showNumber, setShowNumber] = useState(true);

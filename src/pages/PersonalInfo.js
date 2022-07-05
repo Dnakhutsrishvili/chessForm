@@ -6,7 +6,7 @@ import Form from "./Components/Form";
 const PersonalInfo = () => {
   return (
     <>
-      <div className={classes.parent}>
+       <div className={classes.parent}>
         <div>
           <div className={classes.conteiner}>
             <div className={classes.cupparent}>
