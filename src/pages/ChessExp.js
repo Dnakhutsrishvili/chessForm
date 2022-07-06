@@ -2,7 +2,7 @@ import classes from "./ChessExp.module.css";
 import king from "../images/king.png";
 import banner2 from "../images/banner2.png";
 import finalapproved from "../images/finalapproved.png"
-import ChessForm from "./Components/ChessForm.js"
+import CustomSelect from "./Components/CustomSelect.js"
 
 const ChessExp = () => {
   return (
@@ -40,8 +40,8 @@ const ChessExp = () => {
           </div>
           <p className={classes.perInfo}>Chess experience</p>
           <p className={classes.basicInfo}>This is basic informaton fields</p>
-          <ChessForm></ChessForm>
-        </div>
+          <CustomSelect></CustomSelect>
+ </div>
       </div>
     </>
   );

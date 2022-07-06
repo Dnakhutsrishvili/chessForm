@@ -1,0 +1,107 @@
+.red {
+  color: red;
+}
+
+.customDropdown {
+  margin-top: 430px;
+  margin-left: 54px;
+  cursor: pointer;
+  padding: 12px;
+  width: 392px;
+  height: 46px;
+  background: #ffffff;
+  position: relative;
+
+  font-family: "OpenSans";
+  font-style: normal;
+
+  font-size: 20px;
+  line-height: 150%;
+  /* identical to box height, or 30px */
+
+  /* Gray/900 */
+
+  color: #212529;
+}
+.selection {
+  background-color: white;
+  border-radius: 5px;
+  /* padding: 10px 16px; */
+  cursor: pointer;
+
+  font-family: "OpenSans";
+  font-style: normal;
+
+  font-size: 20px;
+  line-height: 150%;
+  /* identical to box height, or 30px */
+  margin-top: -40px;
+
+  /* Gray/900 */
+
+  color: #212529;
+
+  width: 392px;
+  height: 46px;
+  padding-left: 16px;
+
+  /* Gray/White */
+
+  background: #ffffff;
+  /* Border & Divider/divider ↓ */
+
+  box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.125);
+  border-radius: 4px;
+}
+
+.holder {
+  box-sizing: border-box;
+padding-top: 20px;
+padding-bottom: 15px;
+  position: absolute;
+  width: 392px;
+
+  left: 17px;
+  top: 22px;
+
+  background: #ffffff;
+  border: 1px solid rgba(185, 180, 196, 0.3);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.option {
+  margin-bottom: 5px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 150%;
+  /* identical to box height, or 30px */
+
+  color: #646060;
+}
+
+.option:hover {
+  background-color: #f7f7f9;
+  font-family: "OpenSans";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 20px;
+  line-height: 150%;
+  /* identical to box height, or 30px */
+
+  color: #000000;
+}
+
+.defaultSelect {
+  margin-top: 0px;
+}
+
+.arrowDown {
+  position: absolute;
+  margin-left: 440px;
+  margin-top: -83px;
+}

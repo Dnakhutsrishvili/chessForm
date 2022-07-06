@@ -8,6 +8,7 @@ import GlobalStyle from './globalStyles';
 import "./fonts/Nunito/Nunito-VariableFont_wght.ttf"
 import "./fonts/Open_Sans/OpenSans-VariableFont_wdth,wght.ttf"
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
