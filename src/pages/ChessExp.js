@@ -3,6 +3,7 @@ import king from "../images/king.png";
 import banner2 from "../images/banner2.png";
 import finalapproved from "../images/finalapproved.png"
 import CustomSelect from "./Components/CustomSelect.js"
+import CharactersSelect from "./Components/CharactersSelect.js";
 
 const ChessExp = () => {
   return (
@@ -40,7 +41,10 @@ const ChessExp = () => {
           </div>
           <p className={classes.perInfo}>Chess experience</p>
           <p className={classes.basicInfo}>This is basic informaton fields</p>
+       
           <CustomSelect></CustomSelect>
+          <CharactersSelect></CharactersSelect>
+       
  </div>
       </div>
     </>
