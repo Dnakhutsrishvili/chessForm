@@ -2,17 +2,38 @@ import { useState, useEffect } from "react";
 import classes from "./CharactersSelect.module.css";
 import arrow from "../../images/arrow.png";
 import arrowup from "../../images/arrowup.png";
+import React from "react";
 import axios from "axios";
+
 
 const CharactersSelect = () => {
   //dropdown items
   const [select, setSelect] = useState();
+  const [isDropdownViseable, setIsDropdownViseable] = useState(false);
+  //selected state for user
+  const [selectedItemIndex, setselectedItemIndex] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("char");
+ 
+    const initialValue = JSON.parse(saved);
+    console.log(initialValue)
+    return initialValue || null;
+  });
+  
+  const [radioYesValue, setradioYesValue] = useState(
+    () => {
+      // getting stored value
+      const saved = localStorage.getItem("yes");
+   
+      const initialValue = JSON.parse(saved);
+      console.log(initialValue)
+      return initialValue || null;
+    }
+  );
 
-  const [radioValue, setradioValue] = useState();
+ 
 
 
-  const arr =
-    //show dropdown menu
     useEffect(() => {
       const other = {
         id: 1,
@@ -24,18 +45,18 @@ const CharactersSelect = () => {
         .get("https://chess-tournament-api.devtest.ge/api/grandmasters")
         .then((response) => setSelect([...response.data, other]));
 
-  
-
+        localStorage.setItem("char", JSON.stringify(selectedItemIndex));
+        localStorage.setItem("yes", JSON.stringify(radioYesValue));
+       
       // empty dependency array means this effect will only run once (like componentDidMount in classes)
-    }, []);
+    }, [selectedItemIndex,radioYesValue]);
 
 
 
-  const [isDropdownViseable, setIsDropdownViseable] = useState(false);
-  //selected state for user
-  const [selectedItemIndex, setselectedItemIndex] = useState(null);
+
   console.log(selectedItemIndex)
  
+  console.log(radioYesValue)
 
   return (
     <>
@@ -48,7 +69,7 @@ const CharactersSelect = () => {
           }}
         >
           {selectedItemIndex !== null ? (
-            select[selectedItemIndex].name
+            selectedItemIndex
            
           ) : (
             <>
@@ -67,7 +88,7 @@ const CharactersSelect = () => {
                   <div
                     key={item.id}
                     onClick={(e) => {
-                      setselectedItemIndex(index);
+                      setselectedItemIndex(item.name);
                       setIsDropdownViseable(false);
                     }}
                     className={classes.parent}
@@ -110,8 +131,8 @@ const CharactersSelect = () => {
 <p className={classes.radioLabel}>Have you participated in the Redberry Championship? <span className={classes.red}> *</span></p>
 
 <form className={classes.radio}>
-  <input   className={classes.inpradio} name="radio" type="radio"   value={radioValue}/>Yes
- <input  className={classes.inpradio} name="radio" type="radio" value={radioValue}/>No 
+  <input   className={classes.inpradio} name="radio" type="radio" checked={radioYesValue === 'true'}  onChange={(e)=>{setradioYesValue(e.target.value)}}   value="true"/>Yes
+ <input  className={classes.inpradio} name="radio" type="radio" checked={radioYesValue === 'false'}  onChange={(e)=>{setradioYesValue(e.target.value)}} value="false"/>No 
 </form>
 
 

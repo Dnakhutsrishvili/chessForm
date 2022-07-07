@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import classes from "./CustomSelect.module.css";
 import arrow from "../../images/arrow.png";
 import arrowup from "../../images/arrowup.png";
 
 const inputs = [
+ 
   {
     label: "Beginner",
     value: "beginner",
@@ -24,7 +25,22 @@ const ChessForm = () => {
   //show dropdown menu
   const [isDropdownViseable, setIsDropdownViseable] = useState(false);
   //selected state for user
-  const [selectedItemIndex, setselectedItemIndex] = useState(null);
+  const [selectedItemIndex, setselectedItemIndex] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("exp");
+ 
+    const initialValue = JSON.parse(saved);
+    console.log(initialValue)
+    return initialValue || null;
+  });
+
+  useEffect(() => {
+    // storing input name
+    localStorage.setItem("exp", JSON.stringify(selectedItemIndex));
+    
+
+    
+  }, [selectedItemIndex]);
   return (
     <>
       <div className={classes.customDropdown}>
@@ -35,8 +51,8 @@ const ChessForm = () => {
             setIsDropdownViseable(!isDropdownViseable);
           }}
         >
-          {selectedItemIndex !== null ? (
-            select[selectedItemIndex].label
+          {selectedItemIndex !==  null ? (
+            selectedItemIndex
           ) : (
             <>
               <p className={classes.defaultSelect}>
@@ -55,7 +71,7 @@ const ChessForm = () => {
                     key={item.value}
                     className={classes.option}
                     onClick={(e) => {
-                      setselectedItemIndex(index);
+                      setselectedItemIndex(item.label);
                       setIsDropdownViseable(false);
                     }}
                   >
