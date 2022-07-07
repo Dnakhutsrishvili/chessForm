@@ -232,4 +232,32 @@ width: 22.835220336914062px;
   
   color: #95939A;
   }
+  .backbtn {
+    cursor: pointer;
   
+    position: absolute;
+    width: 93px;
+    height: 53px;
+    left: 985px;
+    top: 873px;
+    margin-top: 125px;
+  
+    background: #f5f5f5;
+    border: 1px solid black;
+    border-radius: 8px;
+  
+    font-family: "OpenSans";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 27px;
+    text-transform: capitalize;
+  
+    color: #212529;
+  }
+  
+  .backbtn:hover {
+    background: rgba(185, 180, 196, 0.3);
+    border: 1px solid rgba(194, 165, 249, 0.8);
+    border-radius: 8px;
+  }

@@ -1,9 +1,10 @@
 import classes from "./ChessExp.module.css";
 import king from "../images/king.png";
 import banner2 from "../images/banner2.png";
-import finalapproved from "../images/finalapproved.png"
-import CustomSelect from "./Components/CustomSelect.js"
+import finalapproved from "../images/finalapproved.png";
+import CustomSelect from "./Components/CustomSelect.js";
 import CharactersSelect from "./Components/CharactersSelect.js";
+import { Link } from "react-router-dom";
 
 const ChessExp = () => {
   return (
@@ -19,14 +20,17 @@ const ChessExp = () => {
 
           <img src={banner2} alt="chess"></img>
           <p className={classes.quate}>
-            “Many have become chess masters;<br/>no one has become the master of
-            chess.”
+            “Many have become chess masters;
+            <br />
+            no one has become the master of chess.”
           </p>
           <p className={classes.emanuel}>- Siegbert Tarrasch</p>
         </div>
         <div>
           <div className={classes.headerDiv}>
-            <p className={classes.header}>First step is done, continue to finish onboarding</p>
+            <p className={classes.header}>
+              First step is done, continue to finish onboarding
+            </p>
           </div>
           <div className={classes.boxParent}>
             <div className={classes.boxOne}>
@@ -41,11 +45,13 @@ const ChessExp = () => {
           </div>
           <p className={classes.perInfo}>Chess experience</p>
           <p className={classes.basicInfo}>This is basic informaton fields</p>
-       
+
           <CustomSelect></CustomSelect>
           <CharactersSelect></CharactersSelect>
-       
- </div>
+          <Link to="/personal">
+            <button className={classes.backbtn}>Back</button>
+          </Link>
+        </div>
       </div>
     </>
   );
