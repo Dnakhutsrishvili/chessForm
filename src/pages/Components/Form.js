@@ -6,11 +6,10 @@ import vector from "../../images/Vector.png";
 import { Link, useNavigate } from "react-router-dom";
 import finalapproved from "../../images/finalapproved.png";
 
-
-const Form = () => {
-  const navigate = useNavigate();
+const Form = ({ getData }) => {
+  let navigate = useNavigate();
   //final validate
- 
+
   // state for date placeholder
   const [showDate, setShowDate] = useState(true);
   const [showNumber, setShowNumber] = useState(true);
@@ -71,31 +70,28 @@ const Form = () => {
   const [name, setName] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("name");
- 
-    
+
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   });
   const [email, setEmail] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("email");
-  
-    
+
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   });
   const [number, setNumber] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("number");
- 
-    
+
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   });
   const [date, setDate] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("date");
- 
+
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   });
@@ -135,8 +131,6 @@ const Form = () => {
     localStorage.setItem("number", JSON.stringify(number));
     // storing input date
     localStorage.setItem("date", JSON.stringify(date));
-
-    
   }, [name, email, number, date]);
   //validation function
   const validateFunc = (event) => {
@@ -189,66 +183,76 @@ const Form = () => {
       setShowDateeError(false);
     }
     if (validateDate && validateEmail && validateName && validateNumber) {
-      
+      //reverse and replace characters for api
+      let newDate = date.replace(/-/g, "/").split("/").reverse().join("/");
+
+      const obj = {
+        name: name,
+        email: email,
+        phone: number,
+        date_of_birth: newDate,
+      };
+
+      getData(obj);
+
       navigate("/experience");
     }
-
-
   };
 
   //validate after refresh
   useEffect(() => {
     //name
     const saved = localStorage.getItem("name");
- 
+
     const initialValue = JSON.parse(saved);
-   
-    if (initialValue.length>0) {
+
+    if (initialValue.length > 0) {
       setShowName(false);
-    } 
-    if(initialValue.length>1){
-      setstyleNameApp({ display: "flex" })
+    }
+    if (initialValue.length > 1) {
+      setstyleNameApp({ display: "flex" });
     }
     //email
     const email = localStorage.getItem("email");
- 
+
     const emailValue = JSON.parse(email);
-   
-    if (emailValue.length>0) {
+
+    if (emailValue.length > 0) {
       setShowEmail(false);
-      
-    } 
-    if(emailValue.endsWith("@redberry.ge")){
-      setstyleEmailApp({ display: "flex" })
+    }
+    if (emailValue.endsWith("@redberry.ge")) {
+      setstyleEmailApp({ display: "flex" });
     }
     //phone
     const number = localStorage.getItem("number");
- 
+
     const numberValue = JSON.parse(number);
-   
-    if (numberValue.length>0) {
+
+    if (numberValue.length > 0) {
       setShowNumber(false);
-    } 
-    if(numberValue.length===9){
-      setstylePhoneApp({ display: "flex" })
+    }
+    if (numberValue.length === 9) {
+      setstylePhoneApp({ display: "flex" });
     }
     //date
     const date = localStorage.getItem("date");
- 
+
     const dateValue = JSON.parse(date);
-   
-    if (dateValue.length>0) {
+
+    if (dateValue.length > 0) {
       setShowDate(false);
-    } 
-    if (dateValue.length===10) {
-      setstyleDateApp({ display: "flex" })
-    } 
+    }
+    if (dateValue.length === 10) {
+      setstyleDateApp({ display: "flex" });
+    }
   }, []);
   return (
     <>
-     {validateDate && validateEmail && validateName && validateNumber&& <div className={classes.approvedImage}>
-        <img className={classes.img} src={finalapproved} alt="approved"></img>
-      </div>}
+      {validateDate && validateEmail && validateName && validateNumber && (
+        <div className={classes.approvedImage}>
+          <img className={classes.img} src={finalapproved} alt="approved"></img>
+        </div>
+      )}
       {showNameeError && (
         <div className={classes.errorPopup}>
           <div className={classes.secPerent}>

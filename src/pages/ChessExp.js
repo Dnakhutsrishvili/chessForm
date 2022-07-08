@@ -5,8 +5,15 @@ import finalapproved from "../images/finalapproved.png";
 import CustomSelect from "./Components/CustomSelect.js";
 import CharactersSelect from "./Components/CharactersSelect.js";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const ChessExp = () => {
+const ChessExp = (props) => {
+  const [data, setData] = useState();
+
+  const getData = (childData) => {
+    setData(childData);
+  };
+
   return (
     <>
       <div className={classes.parent}>
@@ -46,8 +53,11 @@ const ChessExp = () => {
           <p className={classes.perInfo}>Chess experience</p>
           <p className={classes.basicInfo}>This is basic informaton fields</p>
 
-          <CustomSelect></CustomSelect>
-          <CharactersSelect></CharactersSelect>
+          <CustomSelect getData={getData}></CustomSelect>
+          <CharactersSelect
+            exp={data}
+            personalInfo={props.data}
+          ></CharactersSelect>
           <Link to="/personal">
             <button className={classes.backbtn}>Back</button>
           </Link>

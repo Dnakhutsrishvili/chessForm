@@ -5,20 +5,20 @@ import arrowup from "../../images/arrowup.png";
 
 const inputs = [
   {
-    label: "Beginner",
+    label: "beginner",
     value: "beginner",
   },
   {
-    label: "Intermediate",
+    label: "intermediate",
     value: "intermediate",
   },
   {
-    label: "Professional",
+    label: "professional",
     value: "professional",
   },
 ];
 
-const CustomSelect = () => {
+const CustomSelect = ({ getData }) => {
   //dropdown items
   const [select, setSelect] = useState(inputs);
   //show dropdown menu
@@ -36,6 +36,13 @@ const CustomSelect = () => {
   useEffect(() => {
     // storing input name
     localStorage.setItem("exp", JSON.stringify(selectedItemIndex));
+
+    const obj = {
+      experience_level: selectedItemIndex,
+    };
+
+    getData(obj);
+    console.log(obj);
   }, [selectedItemIndex]);
   return (
     <>
@@ -62,18 +69,16 @@ const CustomSelect = () => {
           <div className={classes.holder}>
             {select.map((item) => {
               return (
-                
-                  <div
-                    key={Math.random(10)}
-                    className={classes.option}
-                    onClick={(e) => {
-                      setselectedItemIndex(item.label);
-                      setIsDropdownViseable(false);
-                    }}
-                  >
-                   {item.label}
-                  </div>
-                
+                <div
+                  key={Math.random(10)}
+                  className={classes.option}
+                  onClick={(e) => {
+                    setselectedItemIndex(item.label);
+                    setIsDropdownViseable(false);
+                  }}
+                >
+                  {item.label}
+                </div>
               );
             })}
           </div>

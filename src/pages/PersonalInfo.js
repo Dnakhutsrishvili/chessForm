@@ -3,10 +3,14 @@ import king from "../images/king.png";
 import banner from "../images/banner.png";
 import Form from "./Components/Form";
 
-const PersonalInfo = () => {
+const PersonalInfo = ({ getDataApp }) => {
+  const getData = (childData) => {
+    getDataApp(childData);
+  };
+
   return (
     <>
-       <div className={classes.parent}>
+      <div className={classes.parent}>
         <div>
           <div className={classes.conteiner}>
             <div className={classes.cupparent}>
@@ -39,7 +43,7 @@ const PersonalInfo = () => {
           <p className={classes.perInfo}>Personal Information</p>
           <p className={classes.basicInfo}>This is basic informaton fields</p>
 
-          <Form></Form>
+          <Form getData={getData}></Form>
         </div>
       </div>
     </>

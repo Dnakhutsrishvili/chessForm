@@ -6,10 +6,10 @@ import React from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-const CharactersSelect = () => {
+const CharactersSelect = (props) => {
   const navigate = useNavigate();
   //error popups
-
+  const [indexer, setindexer] = useState();
   //dropdown items
   const [select, setSelect] = useState();
   const [isDropdownViseable, setIsDropdownViseable] = useState(false);
@@ -34,7 +34,7 @@ const CharactersSelect = () => {
 
   useEffect(() => {
     const other = {
-      id: 1,
+      id: 5,
       name: "other",
       image: "https://i.stack.imgur.com/l60Hf.png",
     };
@@ -50,8 +50,35 @@ const CharactersSelect = () => {
   }, [selectedItemIndex, radioYesValue]);
 
   const validationForm = () => {
-    if (selectedItemIndex !== null && radioYesValue !== null)
+    if (selectedItemIndex !== null && radioYesValue !== null) {
+      const obj = {
+        ...props.personalInfo,
+        ...props.exp,
+        already_participated: JSON.parse(radioYesValue),
+        character_id: indexer,
+      };
+      const jsonObj = JSON.stringify(obj);
+      console.log(jsonObj);
+  
+      const headers = {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      };
+
+      axios
+        .post("https://chess-tournament-api.devtest.ge/api/register", jsonObj, {
+          headers,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
       navigate("/finished");
+    }
+    // ...props.exp,
+    // ...props.personalInfo
   };
 
   return (
@@ -82,8 +109,9 @@ const CharactersSelect = () => {
                 <div
                   key={item.name}
                   onClick={(e) => {
-                    setselectedItemIndex(item.name);
+                    setselectedItemIndex(item.name,item.id);
                     setIsDropdownViseable(false);
+                    setindexer(index);
                   }}
                   className={classes.parent}
                 >
