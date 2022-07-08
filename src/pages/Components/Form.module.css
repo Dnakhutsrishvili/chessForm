@@ -368,6 +368,7 @@
 }
 
 .nextbtn {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -385,7 +386,7 @@
 }
 
 .btntext {
-  cursor: pointer;
+
   width: 44px;
   height: 27px;
 
@@ -443,13 +444,13 @@
   margin-left: 107px;
   margin-top: -40px;
   
-  background: red;
+  background: #E9FAF1;
   border-radius: 8px;
   
 }
 .img{
 
-  width:22.84px;
-  height:12.21px;
+  width:23px;
+  height:13.00px;
 
 }

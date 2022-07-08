@@ -4,9 +4,17 @@ import arrow from "../../images/arrow.png";
 import arrowup from "../../images/arrowup.png";
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+
 
 
 const CharactersSelect = () => {
+  const navigate = useNavigate();
+  //error popups
+
+
+
   //dropdown items
   const [select, setSelect] = useState();
   const [isDropdownViseable, setIsDropdownViseable] = useState(false);
@@ -48,18 +56,26 @@ const CharactersSelect = () => {
         localStorage.setItem("char", JSON.stringify(selectedItemIndex));
         localStorage.setItem("yes", JSON.stringify(radioYesValue));
        
+   
       // empty dependency array means this effect will only run once (like componentDidMount in classes)
+
+    
     }, [selectedItemIndex,radioYesValue]);
 
 
 
 
-  console.log(selectedItemIndex)
- 
-  console.log(radioYesValue)
+   const validationForm=()=>{
+
+    if(selectedItemIndex!==null&&radioYesValue!==null)
+    navigate("/finished");
+   }
 
   return (
     <>
+    
+   
+
       <div className={classes.customDropdown}>
         {/* custum dropdown selection */}
         <div
@@ -135,6 +151,11 @@ const CharactersSelect = () => {
  <input  className={classes.inpradio} name="radio" type="radio" checked={radioYesValue === 'false'}  onChange={(e)=>{setradioYesValue(e.target.value)}} value="false"/>No 
 </form>
 
+<button onClick={()=>{validationForm()}} className={classes.nextbtn} >
+          <span className={classes.btntext}>Done</span>
+
+         
+        </button>
 
     </>
   );

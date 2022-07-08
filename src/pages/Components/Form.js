@@ -246,9 +246,9 @@ console.log(showName)
   }, []);
   return (
     <>
-      <div className={classes.approvedImage}>
+     {validateDate && validateEmail && validateName && validateNumber&& <div className={classes.approvedImage}>
         <img className={classes.img} src={finalapproved} alt="approved"></img>
-      </div>
+      </div>}
       {showNameeError && (
         <div className={classes.errorPopup}>
           <div className={classes.secPerent}>

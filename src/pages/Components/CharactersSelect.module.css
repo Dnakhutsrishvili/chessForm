@@ -163,3 +163,47 @@ line-height: 150%;
   width: 20px;
   margin-top: -2px;
 }
+.nextbtn {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 13px 24px;
+  gap: 10px;
+  
+  position: absolute;
+  width: 99px;
+  height: 53px;
+  left: 1669px;
+  top: 999px;
+  
+  background: #212529;
+  border-radius: 8px;
+}
+
+.btntext {
+  cursor: pointer;
+  width: 51px;
+  height: 27px;
+  
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  text-transform: capitalize;
+  
+  color: #FFFFFF;
+  
+  
+  /* Inside auto layout */
+  
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.nextbtn:hover {
+  border: 4px solid rgba(194, 165, 249, 0.8);
+  border-radius: 8px;
+}

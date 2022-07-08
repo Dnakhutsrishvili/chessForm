@@ -93,6 +93,7 @@
 }
 /* box styles */
 .boxOne {
+  z-index: -1;
   box-sizing: border-box;
   margin-left: 107px;
   margin-top: 60px;

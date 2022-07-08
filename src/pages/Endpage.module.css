@@ -1,0 +1,55 @@
+.parent {
+    display: flex;
+  }
+  /* conteiner header style */
+  .conteiner {
+    width: 923px;
+    height: 84px;
+    background-color: #7025fb;
+    margin: 0;
+  }
+  
+  .cuptext {
+    margin: 0;
+    color: #ffffff;
+    margin-top: 30px;
+  }
+  
+  .cupparent {
+    display: flex;
+    gap: 8.27px;
+    align-items: center;
+    margin-left: 60px;
+  
+    font-family: "OpenSans";
+    font-size: 22px;
+  }
+  
+  .kingimg {
+    margin-top: 30px;
+  }
+  
+  .rocket{
+
+    display: flex;
+    align-items: center;
+   justify-content: center;
+    flex-direction: column;
+   margin-left: auto;
+   margin-right: auto;
+  }
+
+  .onboarding{
+    width: 402px;
+height: 54px;
+
+font-family: 'Nunito';
+font-style: normal;
+font-weight: 800;
+font-size: 36px;
+line-height: 150%;
+/* identical to box height, or 54px */
+
+
+color: #000000;
+  }
