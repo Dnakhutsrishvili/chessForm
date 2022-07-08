@@ -1,10 +1,9 @@
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import classes from "./CustomSelect.module.css";
 import arrow from "../../images/arrow.png";
 import arrowup from "../../images/arrowup.png";
 
 const inputs = [
- 
   {
     label: "Beginner",
     value: "beginner",
@@ -19,7 +18,7 @@ const inputs = [
   },
 ];
 
-const ChessForm = () => {
+const CustomSelect = () => {
   //dropdown items
   const [select, setSelect] = useState(inputs);
   //show dropdown menu
@@ -28,18 +27,15 @@ const ChessForm = () => {
   const [selectedItemIndex, setselectedItemIndex] = useState(() => {
     // getting stored value
     const saved = localStorage.getItem("exp");
- 
+
     const initialValue = JSON.parse(saved);
-    console.log(initialValue)
+
     return initialValue || null;
   });
 
   useEffect(() => {
     // storing input name
     localStorage.setItem("exp", JSON.stringify(selectedItemIndex));
-    
-
-    
   }, [selectedItemIndex]);
   return (
     <>
@@ -51,7 +47,7 @@ const ChessForm = () => {
             setIsDropdownViseable(!isDropdownViseable);
           }}
         >
-          {selectedItemIndex !==  null ? (
+          {selectedItemIndex !== null ? (
             selectedItemIndex
           ) : (
             <>
@@ -64,20 +60,20 @@ const ChessForm = () => {
         {/* custum dropdown list */}
         {isDropdownViseable ? (
           <div className={classes.holder}>
-            {select.map((item, index) => {
+            {select.map((item) => {
               return (
-                <>
+                
                   <div
-                    key={item.value}
+                    key={Math.random(10)}
                     className={classes.option}
                     onClick={(e) => {
                       setselectedItemIndex(item.label);
                       setIsDropdownViseable(false);
                     }}
                   >
-                    {item.label}
+                   {item.label}
                   </div>
-                </>
+                
               );
             })}
           </div>
@@ -95,4 +91,4 @@ const ChessForm = () => {
   );
 };
 
-export default ChessForm;
+export default CustomSelect;

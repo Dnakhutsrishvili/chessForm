@@ -23,16 +23,17 @@ const Start = () => {
             <p className={classes.about}>a lot about</p>
           </div>
           <p className={classes.textp}> who we are</p>
-          <Link className={classes.decoration} to="/personal">
+
           <button className={classes.btn}>
-            <span className={classes.spanPerent}>
-            <Link className={classes.link} to="/personal">
-              Get Started
+            <Link className={classes.decoration} to="/personal">
+              <span className={classes.spanPerent}>
+                <span className={classes.link} to="/personal">
+                  Get Started
+                </span>
+                <img src={vector} alt="vector"></img>
+              </span>
             </Link>
-            <img src={vector} alt="vector"></img>
-            </span>
           </button>
-          </Link>
         </div>
       </div>
     </>

@@ -16,7 +16,7 @@ const Form = () => {
   const [showNumber, setShowNumber] = useState(true);
   const [showEmail, setShowEmail] = useState(true);
   const [showName, setShowName] = useState(true);
-console.log(showName)
+
   //state for error message
 
   const [showDateError, setShowDateeError] = useState(false);
@@ -113,7 +113,7 @@ console.log(showName)
       setValidateEmail(false);
     }
 
-    if (number.length >= 9 && /^[0-9]+$/.test(number)) {
+    if (number.length === 9 && /^[0-9]+$/.test(number)) {
       setValidateNumber(true);
     } else {
       setValidateNumber(false);
