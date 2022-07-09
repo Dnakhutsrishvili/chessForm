@@ -41,7 +41,7 @@ const CustomSelect = ({ getData }) => {
     const obj = {
       experience_level: selectedItemIndex,
     };
-    console.log(selectedItemIndex)
+    
     if (obj.experience_level === "intermediate") {
       obj.experience_level = "normal";
     }

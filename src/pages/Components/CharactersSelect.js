@@ -18,18 +18,15 @@ const CharactersSelect = (props) => {
 
     return initialValue || null;
   });
-  const [experienceData, setexperienceData] = useState(
-    () => {
-      // getting stored value
-      const saved = localStorage.getItem("experience");
-  
-      const initialValue = JSON.parse(saved);
-  
-      return initialValue || null;
-    }
-  );
+  const [experienceData, setexperienceData] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("experience");
+
+    const initialValue = JSON.parse(saved);
+
+    return initialValue || null;
+  });
   //error popups
- 
 
   const [indexError, setIndexError] = useState(false);
   const [booleanError, setbooleanError] = useState(false);
@@ -65,7 +62,7 @@ const CharactersSelect = (props) => {
 
     return initialValue || null;
   });
- console.log(props.exp)
+
   useEffect(() => {
     const other = {
       id: 5,
@@ -86,7 +83,7 @@ const CharactersSelect = (props) => {
     if (registrationData === null) {
       setregistrationData(props.personalInfo);
     }
-    console.log(experienceData)
+
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, [selectedItemIndex, radioYesValue, selectedid]);
 
@@ -97,7 +94,7 @@ const CharactersSelect = (props) => {
     } else {
       setIndexError(false);
     }
-   
+
     if (radioYesValue === null) {
       setbooleanError(true);
     } else {
@@ -116,17 +113,13 @@ const CharactersSelect = (props) => {
       radioYesValue !== null &&
       props.exp.experience_level.length > 0
     ) {
-     
-  
       //creating object for api
-      console.log(props.exp)
-      console.log(experienceData)
 
-      if(experienceData===null){
+      if (experienceData === null) {
         const obj = {
           ...registrationData,
           ...experienceData,
-  
+
           already_participated: JSON.parse(radioYesValue),
           character_id: selectedid,
         };
@@ -140,7 +133,6 @@ const CharactersSelect = (props) => {
         character_id: selectedid,
       };
       const jsonObj = JSON.stringify(obj);
-      console.log(jsonObj);
 
       const headers = {
         Accept: "application/json",
