@@ -4,6 +4,8 @@ import endpage from "../images/endpage.png";
 import rocket from "../images/rocket.png";
 
 const EndPage=()=>{
+  //clear all data
+  localStorage.clear();
     return<>
      <div className={classes.parent}>
         <div>

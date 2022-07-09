@@ -28,7 +28,7 @@ const Form = ({ getData }) => {
   const inputEmail = useRef(null);
   const inputPhone = useRef(null);
   const inputDate = useRef(null);
-
+  //focusing input form on click
   useEffect(() => {
     if (!showName) {
       inputName.current.focus();
@@ -95,7 +95,7 @@ const Form = ({ getData }) => {
     const initialValue = JSON.parse(saved);
     return initialValue || "";
   });
-
+  //validation
   useEffect(() => {
     if (name.length >= 2) {
       setValidateName(true);
@@ -192,7 +192,7 @@ const Form = ({ getData }) => {
         phone: number,
         date_of_birth: newDate,
       };
-      
+
       getData(obj);
 
       navigate("/experience");

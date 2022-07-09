@@ -83,14 +83,16 @@ const CharactersSelect = (props) => {
     } else {
       setcharacterError(false);
     }
-    console.log(props.exp);
+   
     //validation for thanks page
     if (
       selectedItemIndex !== null &&
       radioYesValue !== null &&
       props.exp.experience_level.length > 0
     ) {
-      console.log(props.exp);
+     
+
+      //creating object for api
       const obj = {
         ...props.personalInfo,
         ...props.exp,
@@ -98,13 +100,13 @@ const CharactersSelect = (props) => {
         character_id: selectedid,
       };
       const jsonObj = JSON.stringify(obj);
-      console.log(jsonObj);
+     
 
       const headers = {
         Accept: "application/json",
         "Content-Type": "application/json",
       };
-
+      //sending post request with axios
       axios
         .post("https://chess-tournament-api.devtest.ge/api/register", jsonObj, {
           headers,
@@ -121,15 +123,15 @@ const CharactersSelect = (props) => {
 
   return (
     <>
-
-{characterError && (
+      {/* error popups*/}
+      {characterError && (
         <div className={classes.errorPopup}>
           <div className={classes.secPerent}>
             <img className={classes.errorImp} src={important} alt="error"></img>
             <p className={classes.errorMessage}>Choose your character</p>
             <button
               onClick={() => {
-                setIndexError(false);
+                setcharacterError(false);
               }}
               className={classes.btnClose}
             >
@@ -138,12 +140,11 @@ const CharactersSelect = (props) => {
           </div>
           <hr className={classes.line} />
           <div>
-            <p className={classes.description}>
-              Please choose your character
-            </p>
+            <p className={classes.description}>Please choose your character</p>
           </div>
         </div>
       )}
+      {/* error popups*/}
       {indexError && (
         <div className={classes.errorPopup}>
           <div className={classes.secPerent}>
@@ -166,7 +167,7 @@ const CharactersSelect = (props) => {
           </div>
         </div>
       )}
-
+      {/* error popups*/}
       {booleanError && (
         <div className={classes.errorPopup}>
           <div className={classes.secPerent}>
@@ -183,9 +184,7 @@ const CharactersSelect = (props) => {
           </div>
           <hr className={classes.line} />
           <div>
-            <p className={classes.description}>
-              Please choose answer y/n
-            </p>
+            <p className={classes.description}>Please choose answer y/n</p>
           </div>
         </div>
       )}
@@ -244,7 +243,7 @@ const CharactersSelect = (props) => {
           <></>
         )}
       </div>
-
+      {/* arrows*/}
       {isDropdownViseable ? (
         <img className={classes.arrowDown} src={arrowup} alt="arrowup"></img>
       ) : (
@@ -255,7 +254,7 @@ const CharactersSelect = (props) => {
         Have you participated in the Redberry Championship?{" "}
         <span className={classes.red}> *</span>
       </p>
-
+      {/* yes/no radio buttons*/}
       <form className={classes.radio}>
         <input
           className={classes.inpradio}
@@ -280,7 +279,7 @@ const CharactersSelect = (props) => {
         />
         No
       </form>
-
+      {/* done button*/}
       <button
         onClick={() => {
           validationForm();
