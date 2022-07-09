@@ -192,7 +192,7 @@ const Form = ({ getData }) => {
         phone: number,
         date_of_birth: newDate,
       };
-
+      
       getData(obj);
 
       navigate("/experience");

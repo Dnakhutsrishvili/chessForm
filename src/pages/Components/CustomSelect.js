@@ -37,9 +37,14 @@ const CustomSelect = ({ getData }) => {
     // storing input name
     localStorage.setItem("exp", JSON.stringify(selectedItemIndex));
 
+  
+
     const obj = {
       experience_level: selectedItemIndex,
     };
+    if(obj.experience_level==="intermediate"){
+      obj.experience_level="normal"
+    }
 
     getData(obj);
     console.log(obj);
