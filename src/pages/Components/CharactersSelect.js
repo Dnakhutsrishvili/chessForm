@@ -9,6 +9,23 @@ import important from "../../images/important.png";
 
 const CharactersSelect = (props) => {
   const navigate = useNavigate();
+  //get props on refresh
+  const [registrationData, setregistrationData] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("obj");
+
+    const initialValue = JSON.parse(saved);
+
+    return initialValue || null;
+  });
+  const [experienceData, setexperienceData] = useState(() => {
+    // getting stored value
+    const saved = localStorage.getItem("experience");
+
+    const initialValue = JSON.parse(saved);
+
+    return initialValue || null;
+  });
   //error popups
 
   const [indexError, setIndexError] = useState(false);
@@ -61,6 +78,13 @@ const CharactersSelect = (props) => {
     localStorage.setItem("yes", JSON.stringify(radioYesValue));
     localStorage.setItem("id", JSON.stringify(selectedid));
 
+    if (experienceData === null) {
+      setexperienceData(props.exp);
+    }
+    if (registrationData === null) {
+      setregistrationData(props.personalInfo);
+    }
+
     // empty dependency array means this effect will only run once (like componentDidMount in classes)
   }, [selectedItemIndex, radioYesValue, selectedid]);
 
@@ -83,24 +107,23 @@ const CharactersSelect = (props) => {
     } else {
       setcharacterError(false);
     }
-   
+
     //validation for thanks page
     if (
       selectedItemIndex !== null &&
       radioYesValue !== null &&
       props.exp.experience_level.length > 0
     ) {
-     
-
       //creating object for api
       const obj = {
-        ...props.personalInfo,
-        ...props.exp,
+        ...registrationData,
+        ...experienceData,
+
         already_participated: JSON.parse(radioYesValue),
         character_id: selectedid,
       };
       const jsonObj = JSON.stringify(obj);
-     
+      console.log(jsonObj);
 
       const headers = {
         Accept: "application/json",

@@ -194,6 +194,7 @@ const Form = ({ getData }) => {
       };
 
       getData(obj);
+      localStorage.setItem("obj", JSON.stringify(obj));
 
       navigate("/experience");
     }
