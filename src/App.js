@@ -8,12 +8,14 @@ import React from "react";
 import { useState } from "react";
 
 function App() {
+  //get data from child component
   const [data, setData] = useState();
   const getDataApp = (childData) => {
     setData(childData);
   };
   return (
     <>
+      {/* react routes */}
       <Routes>
         <Route path="/" element={<Start />} />
         <Route

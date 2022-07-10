@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const ChessExp = (props) => {
+
+  //get data from child component
   const [data, setData] = useState();
 
   const getData = (childData) => {

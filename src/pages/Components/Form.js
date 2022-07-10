@@ -7,9 +7,8 @@ import { Link, useNavigate } from "react-router-dom";
 import finalapproved from "../../images/finalapproved.png";
 
 const Form = ({ getData }) => {
+  //final validate for router
   let navigate = useNavigate();
-  //final validate
-
   // state for date placeholder
   const [showDate, setShowDate] = useState(true);
   const [showNumber, setShowNumber] = useState(true);
@@ -249,11 +248,13 @@ const Form = ({ getData }) => {
   }, []);
   return (
     <>
+      {/* if all validation is true show green approved logo */}
       {validateDate && validateEmail && validateName && validateNumber && (
         <div className={classes.approvedImage}>
           <img className={classes.img} src={finalapproved} alt="approved"></img>
         </div>
       )}
+      {/* popups for errors */}
       {showNameeError && (
         <div className={classes.errorPopup}>
           <div className={classes.secPerent}>
@@ -340,6 +341,7 @@ const Form = ({ getData }) => {
           </div>
         </div>
       )}
+      {/* input form */}
       <form onSubmit={validateFunc} className={classes.form}>
         <input
           onChange={(e) => {

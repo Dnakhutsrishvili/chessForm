@@ -4,6 +4,7 @@ import banner from "../images/banner.png";
 import Form from "./Components/Form";
 
 const PersonalInfo = ({ getDataApp }) => {
+  //get data from child component
   const getData = (childData) => {
     getDataApp(childData);
   };
